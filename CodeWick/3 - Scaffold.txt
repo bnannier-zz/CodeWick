@@ -1,0 +1,38 @@
+﻿Scaffold Scaffolder_Admin Theme -Area Admin -Force
+Scaffold Scaffolder_Admin Setting -Area Admin -Force
+Scaffold Scaffolder_Admin Role -Area Admin -Force
+Scaffold Scaffolder_Admin User -Area Admin -Force
+Scaffold Scaffolder_Admin RoleUser -Area Admin -Force
+
+Scaffold Scaffolder_Admin Category -Area Admin -Force
+Scaffold Scaffolder_Admin Content -Area Admin -Force
+Scaffold Scaffolder_Admin RequestQuote -Area Admin -Force
+
+Scaffold Scaffolder_Admin LogMessage -Area Admin -Force
+Scaffold Scaffolder_Admin LogException -Area Admin -Force
+
+Scaffold Scaffolder_Admin Area -Area Admin -Force
+Scaffold Scaffolder_Admin View -Area Admin -Force
+Scaffold Scaffolder_Admin Zone -Area Admin -Force
+
+
+
+
+
+
+
+// Custom Scaffolding
+
+
+
+
+// RazorView Scaffolding
+Scaffold CustomTemplate View _CreateOrEdit
+Scaffold CustomTemplate View Create
+Scaffold CustomTemplate View Delete
+Scaffold CustomTemplate View Details
+Scaffold CustomTemplate View Edit
+Scaffold CustomTemplate View Index
+Scaffold CustomScaffolder Scaffolder.Admin
+Get-Scaffolder
+Set-DefaultScaffolder Scaffolder_Admin Scaffolder.Admin

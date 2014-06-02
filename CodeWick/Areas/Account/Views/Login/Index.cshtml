@@ -1,0 +1,52 @@
+﻿@model CodeWick.Areas.Account.Models.LoginModel
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Account/_Account.cshtml";
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Login";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Account/Account.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm()) {
+<div id="account">
+    <div class="title"><h2>Client Login</h2></div>
+    <div class="content">
+    @if (Request.IsAuthenticated) {
+        @Html.ActionLink("Logoff", "Logoff", "Account", new { area = "Account" })
+    } else {
+        <div>@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")</div>
+        
+        <div class="editor-label">@Html.LabelFor(m => m.UserName)</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+        
+        <div class="editor-label">@Html.LabelFor(m => m.Password)</div>
+        <div class="editor-field">
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        
+        <div class="editor-label">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+        </div>
+        
+        <div class="editor-button">
+	        <button id="btn_login" type="submit" name="login" ><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_sign-in.png")" alt=""/></button>
+        </div>
+        <div class="editor-link">
+            <span class="register"><a href="@(Request.ApplicationPath)account/register">Register a new account.</a></span>
+            <br />
+            <span class="recover"><a href="@(Request.ApplicationPath)account/recover">Forgot your password?</a></span>
+        </div>
+    }
+    </div>
+</div>
+}

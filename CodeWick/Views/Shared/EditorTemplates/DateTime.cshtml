@@ -1,0 +1,2 @@
+﻿@model DateTime?
+@Html.TextBox("", Model.HasValue ? String.Format("{0:M/d/yyyy HH:mm}", Model) : string.Empty, new { @class = "datefield" })

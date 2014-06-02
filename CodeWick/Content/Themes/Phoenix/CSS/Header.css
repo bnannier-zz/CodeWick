@@ -1,0 +1,41 @@
+﻿/* -------------------------------------------------- */
+/* Header CSS                                         */
+/* -------------------------------------------------- */
+header{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 480px;
+    background-color: transparent;
+}
+
+header .logo{
+    position: absolute;
+    float: left;
+    width: 250px;
+    height: 70px;
+    top: 10px;
+    left: 20px;
+}
+
+header .navigation{
+    position: absolute;
+    float: right;
+    width: auto;
+    height: auto;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 16px;
+    top: 20px;
+    right: 20px;
+    padding: 0px 10px 10px 10px;
+    border-bottom: 1px dashed #bbbbbb;
+}
+
+header .navigation a{
+    margin: 0px 20px 0px 0px;
+}
+
+header .navigation a:link{color: #ffffff;}
+header .navigation a:visited{color: #ffffff;}
+header .navigation a:hover{color: #df1c20; border-bottom: 4px solid #000000;}
+header .navigation a:active{color: #ffffff;}

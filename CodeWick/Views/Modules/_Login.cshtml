@@ -1,0 +1,51 @@
+﻿@model CodeWick.Areas.Account.Models.LoginModel
+@using CodeWick.Models
+@using CodeWick.Helpers
+
+<div id="login">
+@using (Ajax.BeginForm("_Login", "Modules", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "login" })) {
+    <div class="container">
+    @if (Request.IsAuthenticated) {
+        <div class="editor-label">Hi @User.Identity.Name,<br />You have 0 messages.</div>
+        if(Roles.IsUserInRole("administrator")){
+            <div class="editor-label">@Html.ActionLink("Admin", "Index", "Settings", new { Area = "Admin" }, new { })</div>
+        }
+        <div class="editor-label">@Html.ActionLink("Logoff", "Index", "Logoff", new { Area = "Account" }, new { })</div>
+    } else if (Model.IsAuthenticated == true) {
+        <div class="editor-label">Hi @User.Identity.Name,<br />You have 0 messages.</div>
+        if(Roles.IsUserInRole("administrator")){
+            <div class="editor-label">@Html.ActionLink("Admin", "Index", "Settings", new { Area = "Admin" }, new { })</div>
+        }
+        <div class="editor-label">@Html.ActionLink("Logoff", "Index", "Logoff", new { Area = "Account" }, new { })</div>
+    } else {
+        <h3>Client Login</h3>
+        <div class="editor-validation">@Html.ValidationSummary(true, "Login was unsuccessful.")</div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+        </div>
+        <div class="editor-label">
+            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "" })
+            @Html.LabelFor(m => m.RememberMe)
+        </div>
+        <div class="editor-button">
+	        <button id="btn_login" type="submit" name="login" ><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_sign-in.png")" alt=""/></button>
+        </div>
+        <div class="editor-link">
+            <a href="@(Request.ApplicationPath)account/register">Register a new account.</a><br />
+            <a href="@(Request.ApplicationPath)account/recover">Forgot your password?</a>
+        </div>
+    }
+    </div>
+}
+</div>

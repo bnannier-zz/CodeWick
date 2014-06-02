@@ -1,0 +1,67 @@
+@model CodeWick.Models.LogException
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+<script type="text/javascript">
+    $(function () { $(".datefield").datepicker(); });
+</script>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Type)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Type)
+    @Html.ValidationMessageFor(model => model.Type)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Source)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Source)
+    @Html.ValidationMessageFor(model => model.Source)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.StackTrace)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.StackTrace)
+    @Html.ValidationMessageFor(model => model.StackTrace)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ModuleName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ModuleName)
+    @Html.ValidationMessageFor(model => model.ModuleName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Message)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Message)
+    @Html.ValidationMessageFor(model => model.Message)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Exception)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Exception)
+    @Html.ValidationMessageFor(model => model.Exception)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Time)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Time)
+    @Html.ValidationMessageFor(model => model.Time)
+</div>
+
+

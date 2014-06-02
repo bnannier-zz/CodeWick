@@ -1,0 +1,13 @@
+﻿/* -------------------------------------------------- */
+/* Site Navigation Module CSS                         */
+/* -------------------------------------------------- */
+#navigation {
+    position: relative;
+    float: left;
+    background: #faffd3;
+    width: 180px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #eef5b4;
+}

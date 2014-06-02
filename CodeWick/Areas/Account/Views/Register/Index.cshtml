@@ -1,0 +1,54 @@
+﻿@model CodeWick.Areas.Account.Models.RegisterModel
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Account/_Account.cshtml";
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Register";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Account/Account.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm()) {
+<div id="account">
+    <div class="title"><h2>Client Registeration</h2></div>
+    <div class="content">
+        <div>@Html.ValidationSummary(false, "Registeration was unsuccessful. Please correct the errors and try again.")</div>
+        <div class="editor-label">Passwords are required to be a minimum of @ViewData["PasswordLength"] characters in length.</div>
+
+        <div class="editor-label">@Html.LabelFor(m => m.UserName)</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+
+        <div class="editor-label">@Html.LabelFor(m => m.Email)</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div class="editor-label">@Html.LabelFor(m => m.Password)</div>
+        <div class="editor-field">
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div class="editor-label">@Html.LabelFor(m => m.ConfirmPassword)</div>
+        <div class="editor-field">
+            @Html.PasswordFor(m => m.ConfirmPassword)
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </div>
+
+        <div class="editor-label">Please enter the words as showen bellow</div>
+        <div class="account_reCaptcha">@Html.Raw(@Html.GenerateCaptcha())</div>
+
+        <div class="editor-button">
+	        <button id="btn_register" type="submit" name="register" ><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_register.png")" alt=""/></button>
+        </div>
+    </div>
+</div>
+}

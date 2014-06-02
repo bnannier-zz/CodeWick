@@ -1,0 +1,127 @@
+﻿/* -------------------------------------------------- */
+/* Content Module CSS: introduction                   */
+/* -------------------------------------------------- */
+#introduction {
+    position: relative;
+    float: left;
+    background: #ffffff;
+    border-radius: 5px 0px 0px 5px;
+}
+
+#introduction .container{
+    position: relative;
+    float: left;
+    width: 628px;
+    height: 170px;
+    margin: 10px 5px 10px 10px;
+    padding: 10px;
+    background: #f4f3f0;
+    border-radius: 5px;
+}
+
+
+/* -------------------------------------------------- */
+/* Content Module CSS: what_we_do                     */
+/* -------------------------------------------------- */
+#what_we_do {
+    position: relative;
+    float: left;
+    margin: 10px 5px 10px 0px;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+#what_we_do .container{
+    position: relative;
+    float: left;
+    width: 298px;
+    height: 250px;
+    padding: 10px;
+}
+
+#what_we_do .link{
+    position: relative;
+    float: left;
+    padding: 0px 0px 5px 10px;
+    width: 290px;
+    border-bottom: 1px solid #dddddd;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#what_we_do a:link{color: #4e4c4c;}
+#what_we_do a:visited{color: #4e4c4c;}
+#what_we_do a:hover{color: #df1c20;}
+#what_we_do a:active{color: #4e4c4c;}
+
+
+/* -------------------------------------------------- */
+/* Content Module CSS: our_process                    */
+/* -------------------------------------------------- */
+#our_process {
+    position: relative;
+    float: left;
+    margin: 10px 0px 10px 5px;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+#our_process .container{
+    position: relative;
+    float: left;
+    width: 628px;
+    height: 250px;
+    padding: 10px;
+}
+
+#our_process h2{
+    color: #df1c20;
+}
+
+#our_process p{
+    width: auto;
+    padding: 0px 0px 0px 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #6f6f6f;
+}
+
+/* -------------------------------------------------- */
+/* Content Module CSS: introduction                   */
+/* -------------------------------------------------- */
+#promotion {
+    position: relative;
+    float: left;
+    margin: 0px 10px 0px 10px;
+    background: #ffffff;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #cccccc;
+    border-bottom: 0px;
+}
+
+#promotion .container{
+    position: relative;
+    float: left;
+    width: 303px;
+    height: 200px;
+    margin: 10px 5px 10px 10px;
+}
+
+/* -------------------------------------------------- */
+/* Content Module CSS: introduction                   */
+/* -------------------------------------------------- */
+#footer {
+    position: relative;
+    float: none;
+    text-align: center;
+}
+
+#footer .container{
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 10px;
+}

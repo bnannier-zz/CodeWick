@@ -1,0 +1,74 @@
+﻿/* -------------------------------------------------- */
+/* Login Module CSS                                   */
+/* -------------------------------------------------- */
+#login {
+    position: relative;
+    float: left;
+    width: 180px;
+}
+
+/* Ajax must have a container */
+#login .container{
+    position: relative;
+    float: left;
+    background: #faffd3;
+    width: 178px;
+    padding: 5px 5px 0px 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #eef5b4;
+}
+
+#login .editor-validation{
+    position: absolute;
+    float: left;
+    top: -80px;
+    left: -20;
+    z-index: 1000;
+    width: 280px;
+}
+
+#login .editor-label{
+    position: relative;
+    float: left;
+    width: 100%;
+    color: #777777;
+    font-size: small;
+    margin: 0px;
+    padding: 0px;
+}
+
+#login .editor-field input[type="text"],
+#login .editor-field input[type="password"] {
+    position: relative;
+    float: left;
+    font-size: small;
+    width: 98%;
+    color: #444444;
+    margin: 0px 0px 5px 0px;
+    border: 1px solid #cccccc;
+    background: #ffffff;
+}
+
+#login .editor-button{
+    position: relative;
+    float: left;
+    padding: 5px 0px 5px 0px;
+}
+
+#login .editor-link{
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 5px 0px 0px 15px;
+}
+
+#login a{
+    font-size: xx-small;
+}
+
+#login ul{
+    list-style-type: disc;
+    color: #cc0000;
+    margin: 0px 0px 0px 20px;
+}

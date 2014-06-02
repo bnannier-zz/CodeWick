@@ -1,0 +1,74 @@
+@model CodeWick.Models.User
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/User.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin User";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="admin">
+    @if(Context.User.IsInRole("administrator")) {
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>User's Details</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+			<div class="display-label">Username:</div>
+			<div class="display-field">@Model.Username</div>
+			<div class="display-label">Email:</div>
+			<div class="display-field">@Model.Email</div>
+			<div class="display-label">Password:</div>
+			<div class="display-field">@Model.Password</div>
+			<div class="display-label">First Name:</div>
+			<div class="display-field">@Model.FirstName</div>
+			<div class="display-label">Last Name:</div>
+			<div class="display-field">@Model.LastName</div>
+			<div class="display-label">Comment:</div>
+			<div class="display-field">@Model.Comment</div>
+			<div class="display-label">Is Approved:</div>
+			<div class="display-field">@Model.IsApproved</div>
+			<div class="display-label">Password Failures Since Last Success:</div>
+			<div class="display-field">@Model.PasswordFailuresSinceLastSuccess</div>
+			<div class="display-label">Last Password Failure Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.LastPasswordFailureDate)</div>
+			<div class="display-label">Last Activity Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.LastActivityDate)</div>
+			<div class="display-label">Last Lockout Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.LastLockoutDate)</div>
+			<div class="display-label">Last Login Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.LastLoginDate)</div>
+			<div class="display-label">Confirmation Token:</div>
+			<div class="display-field">@Model.ConfirmationToken</div>
+			<div class="display-label">Create Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.CreateDate)</div>
+			<div class="display-label">Is Locked Out:</div>
+			<div class="display-field">@Model.IsLockedOut</div>
+			<div class="display-label">Last Password Changed Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.LastPasswordChangedDate)</div>
+			<div class="display-label">Password Verification Token:</div>
+			<div class="display-field">@Model.PasswordVerificationToken</div>
+			<div class="display-label">Password Verification Token Expiration Date:</div>
+			<div class="display-field">@String.Format("{0:g}", Model.PasswordVerificationTokenExpirationDate)</div>
+			<div class="display-label">Roles:</div>
+			<div class="display-field">@(Model.Roles == null ? "None" : Model.Roles.Count.ToString())</div>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_edit.png"), "Edit", "Edit", "Users", null, new { id=Model.UserId }, new { @class = "editor-button" }, new { @class = "editor-image" })
+            @Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_back.png"), "Index", "Index", "Users", null, null, new { @class = "editor-button" }, new { @class = "editor-image" })
+		}
+	    </fieldset>
+    </div>
+    } else {
+        <div>Administrator access required.</div>
+    }
+</div>

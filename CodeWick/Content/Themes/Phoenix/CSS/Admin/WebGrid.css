@@ -1,0 +1,40 @@
+﻿.grid {
+    margin: 0px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.head {
+    background-color: #444444;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.foot {
+    background-color: #444444;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.row {
+    background-color: #555555;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.alt {
+    background-color: #666666;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.grid th, .grid td {
+    border: 1px solid #777777;
+    padding: 5px;
+}
+
+.product {
+    background-color: #ff0000;
+}

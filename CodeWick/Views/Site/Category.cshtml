@@ -1,0 +1,29 @@
+﻿@model CodeWick.Models.Category
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Site/_Category.cshtml";
+
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    } else {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Site/_Site.cshtml";
+    }
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Site/Content.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        @Model.CSS
+    </style>
+}
+
+@using (Html.BeginForm()) {
+    if (Model != null) {
+        <div class="content">@Html.Raw(Model.Body)</div>
+    } else {
+        <p>Category is Unavailable</p>
+    }
+}

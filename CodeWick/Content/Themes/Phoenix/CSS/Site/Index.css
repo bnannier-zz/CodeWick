@@ -1,0 +1,14 @@
+﻿/* -------------------------------------------------- */
+/* Index CSS                                          */
+/* -------------------------------------------------- */
+body {
+    background: #eeeeee url('../../Images/background_main.png') repeat-x;
+    font-family: 'Arial', 'Georgia', sans-serif;
+}
+
+section {
+    position: relative;
+    float: left;
+    width: auto;
+    height: auto;
+}

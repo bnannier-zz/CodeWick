@@ -1,0 +1,42 @@
+@model CodeWick.Models.Role
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".exit").click(function () {
+            $("#busyIndicator").show();
+
+            $.ajax({
+                url: '@Url.Action("Index", "Roles", new { Area = "Admin"})',
+                type: 'POST',
+                traditional: true,
+                success: function (data) {
+                    $('#content').html(data);
+                    $('#relationship_wrapper').empty();
+                    $('#relationship_wrapper').hide();
+                    $("#busyIndicator").hide();
+                }
+            });
+        });
+    });
+</script>
+
+<div class="relationship_opacity"></div>
+<div class="relationship_content">
+    <fieldset>
+		<legend>Delete Role</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+			<div class="display-label">Role Name:</div>
+			<div class="display-field">@Model.RoleName</div>
+			<div class="display-label">Description:</div>
+			<div class="display-field">@Model.Description</div>
+			<div class="display-label">Users:</div>
+			<div class="display-field">@(Model.Users == null ? "None" : Model.Users.Count.ToString())</div>
+			<button type="submit" name="delete" class="editor-button"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_delete.png")" alt="" class="editor-image" /></button>
+        }
+	</fieldset>
+    <div class="relationship_exit"><a href="#" class="exit"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_exit.png")" alt="" class="editor-image" /></a></div>
+</div>

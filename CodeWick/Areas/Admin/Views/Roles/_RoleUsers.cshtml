@@ -1,0 +1,97 @@
+﻿@model CodeWick.Areas.Admin.Models.RoleUsers_ViewModel
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+<script type="text/javascript">
+    $(document).ready( function() {
+        $("#available_list ul").sortable({
+            opacity: 0.6,
+            revert: 100,
+            scroll: true,
+            appendTo: "#available_list",
+            helper: 'clone',
+            zIndex: 50000,
+            placeholder: 'placeholder',
+            connectWith: ".connectedSortable",
+            receive: function (event, ui) {
+                $("#summary").hide();
+            }
+        }).disableSelection();
+        
+        $("#relationship_list ul").sortable({
+            opacity: 0.6,
+            revert: 100,
+            scroll: true,
+            appendTo: "#relationship_list",
+            helper: 'clone',
+            zIndex: 50000,
+            placeholder: 'placeholder',
+            connectWith: ".connectedSortable",
+            receive: function(event, ui) {
+                $("#summary").hide();
+            },
+            update: function () {
+                $("#busyIndicator").show();
+                $.ajax({
+                    url: '@Url.Action("_RoleUsers", "Roles", new { Area = "Admin"})',
+                    data: { id: '@(Model.Role.RoleId)',
+                            available_list: $("#available_list ul").sortable('toArray'),
+                            relationship_list: $("#relationship_list ul").sortable('toArray')},
+                    type: 'POST',
+                    traditional: true,
+                    success: function (data) {
+                        $('#relationship_wrapper').html(data);
+                        $("#busyIndicator").hide();
+                    }
+                });
+            }
+        }).disableSelection();
+
+        $(".exit").click(function () {
+            $("#busyIndicator").show();
+
+            $.ajax({
+                url: '@Url.Action("Index", "Roles", new { Area = "Admin"})',
+                type: 'POST',
+                traditional: true,
+                success: function (data) {
+                    $('#content').html(data);
+                    $('#relationship_wrapper').empty();
+                    $('#relationship_wrapper').hide();
+                    $("#busyIndicator").hide();
+                }
+            });
+        });
+
+        $(".datefield").datepicker();
+    });
+</script>
+
+<div class="relationship_opacity"></div>
+<div class="relationship_content">
+    <fieldset>
+		<legend>@(char.ToUpper(Model.Role.RoleName[0]) + Model.Role.RoleName.Substring(1))(s)</legend>
+        <div id="available_container" style="margin: 0px 12px 0px 0px;">
+            <div id="available_title">Available users</div>
+            <div id="available_list">
+                <ul class="connectedSortable">
+                @foreach (User userAvailable in Model.UsersAvailable) {
+                    <li id="@userAvailable.UserId" class="ui-state-default">@userAvailable.Username</li>
+                }
+                </ul>
+            </div>
+        </div>
+        <div id="relationship_container">
+            <div id="relationship_title">@(char.ToUpper(Model.Role.RoleName[0]) + Model.Role.RoleName.Substring(1))(s)</div>
+            <div id="relationship_list">
+                <ul class="connectedSortable">
+                @foreach (User userInRole in Model.UsersInRole) {
+                    <li id="@userInRole.UserId" class="ui-state-default">@userInRole.Username</li>
+                }
+                </ul>
+            </div>
+        </div>
+	</fieldset>
+    <div class="relationship_exit"><a href="#" class="exit"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_exit.png")" alt="" class="editor-image" /></a></div>
+</div>

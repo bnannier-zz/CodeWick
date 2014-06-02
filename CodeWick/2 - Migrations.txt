@@ -1,0 +1,5 @@
+﻿Step 1: Add model to context class
+Step 2: Add-Migration Add-Table-Variable
+Step 3: Update-Database
+
+Init: Run the ‘Enable-Migrations’ command in Package Manager Console.

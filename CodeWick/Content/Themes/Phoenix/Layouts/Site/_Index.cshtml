@@ -1,0 +1,99 @@
+﻿@using CodeWick.Models;
+@using CodeWick.Helpers;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Body.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Footer.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/General.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Header.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Slider.css")" rel="stylesheet" type="text/css" />
+    
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Site/Content.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Site/Index.css")" rel="stylesheet" type="text/css" />
+    
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Shared/_Content.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Shared/_Login.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Shared/_NewsTicker.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Shared/_RequestQuote.css")" rel="stylesheet" type="text/css" />
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+    
+    @RenderSection("AddToHead", false)
+
+    <script src="@Url.Content("~/Scripts/jquery-1.8.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.22.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Scripts/Slider.js")" type="text/javascript"></script>
+    
+    <!-- Slider -->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "fade",              //String: Select your animation type, "fade" or "slide"
+                slideshow: true,                //Boolean: Animate slider automatically
+                slideshowSpeed: 7000,           //Integer: Set the speed of the slideshow cycling, in milliseconds
+                animationDuration: 600,         //Integer: Set the speed of animations, in milliseconds
+                directionNav: false,             //Boolean: Create navigation for previous/next navigation? (true/false)
+                controlNav: true,               //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+                keyboardNav: true,              //Boolean: Allow slider navigating via keyboard left/right keys
+                mousewheel: false,              //Boolean: Allow slider navigating via mousewheel
+                prevText: "Previous",           //String: Set the text for the "previous" directionNav item
+                nextText: "Next",               //String: Set the text for the "next" directionNav item
+                pausePlay: false,               //Boolean: Create pause/play dynamic element
+                pauseText: 'Pause',             //String: Set the text for the "pause" pausePlay item
+                playText: 'Play',               //String: Set the text for the "play" pausePlay item
+                randomize: false,               //Boolean: Randomize slide order
+                slideToStart: 0,                //Integer: The slide that the slider should start on. Array notation (0 = first slide)
+                animationLoop: true,            //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
+                pauseOnAction: true,            //Boolean: Pause the slideshow when interacting with control elements, highly recommended.
+                pauseOnHover: false,            //Boolean: Pause the slideshow when hovering over slider, then resume when no longer hovering
+                controlsContainer: "",          //Selector: Declare which container the navigation elements should be appended too. Default container is the flexSlider element. Example use would be ".flexslider-container", "#container", etc. If the given element is not found, the default action will be taken.
+                manualControls: "",             //Selector: Declare custom control navigation. Example would be ".flex-control-nav li" or "#tabs-nav li img", etc. The number of elements in your controlNav should match the number of slides/tabs.
+                start: function () { },            //Callback: function(slider) - Fires when the slider loads the first slide
+                before: function () { },           //Callback: function(slider) - Fires asynchronously with each slider animation
+                after: function () { },            //Callback: function(slider) - Fires after each slider animation completes
+                end: function () { }               //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
+            });
+        });
+	</script>
+</head>
+<body>
+    <div class="site_dimension">
+        <header>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="@Url.Content("~/Content/Uploads/Slider/slide1.png")" title="Web Design" alt="" />
+                        <p class="flex-caption">
+                            <span style="font-family: arial,helvetica,sans-serif; font-size: xx-large;"><strong>Empower your business</strong></span><br /><br />
+                            <span style="font-family: arial,helvetica,sans-serif; font-size: x-large; color: #000000;">With innovative solutions that set you apart...</span><br /><br />
+                            <span style="font-family: arial,helvetica,sans-serif; font-size: medium;">CodeWick Solutions provides a unified one stop shop for custom web site design & development, e-commerce site design, mobile application development, branding, search engine optimization and web strategy solutions to a diverse client base across the globe. With our aggressive overhead model CodeWick's world class services are offered at rates 20-30% below industry average.</span>
+                        </p>
+                    </li>
+                </ul>
+                <div class="logo">@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/logo.png"), (((Setting)Session["setting"]).SiteName), "index", "site", null, new { area = "", controller = "Site", action = "Index" }, new { @class = "" }, new { @class = "" })</div>
+                <div class="navigation">
+                    @Html.ActionLink("Portfolio", "Category", "Site", new { id = "portfolio" }, null)
+                    @Html.ActionLink("About", "Category", "Site", new { id = "about" }, null)
+                    @Html.ActionLink("Contact", "Category", "Site", new { id = "contact" }, null)
+                </div>
+                <div class="body_partial"><div class="body_partial_gray"></div></div>
+            </div>
+        </header>
+        <section id="content">@Html.Action("_Content", "Modules", new { id = "home" })</section>
+    </div>
+    <footer>
+        <div class="site_dimension">
+            <div class="bottom"></div>
+            <div id="footer">@Html.Action("_Content", "Modules", new { id = "footer" })</div>
+        </div>
+    </footer>
+</body>
+</html>

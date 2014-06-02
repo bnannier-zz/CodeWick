@@ -1,0 +1,46 @@
+@model CodeWick.Models.Zone
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/Zone.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin Zone";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="admin">
+    @if(Context.User.IsInRole("administrator")) {
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>Zone's Details</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+			<div class="display-label">Area:</div>
+			<div class="display-field">@Html.DisplayTextFor(_ => Model.Area).ToString()</div>
+			<div class="display-label">View:</div>
+			<div class="display-field">@Html.DisplayTextFor(_ => Model.View).ToString()</div>
+			<div class="display-label">Width:</div>
+			<div class="display-field">@Model.Width</div>
+			<div class="display-label">Height:</div>
+			<div class="display-field">@Model.Height</div>
+			<div class="display-label">Order:</div>
+			<div class="display-field">@Model.Order</div>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_edit.png"), "Edit", "Edit", "Zones", null, new { id=Model.ZoneId }, new { @class = "editor-button" }, new { @class = "editor-image" })
+            @Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_back.png"), "Index", "Index", "Zones", null, null, new { @class = "editor-button" }, new { @class = "editor-image" })
+		}
+	    </fieldset>
+    </div>
+    } else {
+        <div>Administrator access required.</div>
+    }
+</div>

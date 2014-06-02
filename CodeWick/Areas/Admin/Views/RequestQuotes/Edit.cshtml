@@ -1,0 +1,38 @@
+@model CodeWick.Models.RequestQuote
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/RequestQuote.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin RequestQuote";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="admin">
+    @if(Context.User.IsInRole("administrator")) {
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>Edit RequestQuote</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+			@Html.HiddenFor(model => model.RequestQuoteId)
+			@Html.Partial("_CreateOrEdit", Model)
+			<button type="submit" name="save" class="editor-button"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_save.png")" alt="" class="editor-image" /></button>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_cancel.png"), "Index", "Index", "RequestQuotes", null, null, new { @class = "editor-button" }, new { @class = "editor-image" })
+		}
+	    </fieldset>
+    </div>
+    } else {
+        <div>Administrator access required.</div>
+    }
+</div>

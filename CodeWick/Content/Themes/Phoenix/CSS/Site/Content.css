@@ -1,0 +1,238 @@
+﻿/* -------------------------------------------------- */
+/* Deafult Content Style                              */
+/* -------------------------------------------------- */
+body{
+    font-size: 11pt;
+    font-family: Arial;
+}
+
+h1, h2, h3, h4, h5, h6, hr, p, ul, li{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    font-size: 24pt;
+    color: #99cc00;
+    margin: 10px 0px 10px 0px;
+}
+
+h2{
+    font-size: 18pt;
+    color: #99cc00;
+    margin: 9px 0px 9px 0px;
+}
+
+h3{
+    font-size: 14pt;
+    color: #99cc00;
+    margin: 8px 0px 8px 0px;
+}
+
+h4{
+    font-size: 12pt;
+    color: #777777;
+    margin: 7px 0px 7px 0px;
+}
+
+h5{
+    font-size: 10pt;
+    color: #888888;
+    margin: 6px 0px 6px 0px;
+}
+
+h6{
+    font-size: 8pt;
+    color: #999999;
+    margin: 5px 0px 5px 0px;
+}
+
+p{
+    font-size: 11pt;
+    color: #888888;
+    margin: 0px 0px 5px 0px;
+}
+
+ul{
+    font-size: 11pt;
+    color: #999999;
+    margin: 0px 0px 10px 50px;
+}
+
+li{
+    margin: 0px 0px 5px 0px;
+}
+
+hr{
+    border: 2px solid #df1c20;
+}
+
+/* -------------------------------------------------- */
+/* content container                                  */
+/* -------------------------------------------------- */
+#content {
+    position: relative;
+    float: left;
+    width: 980px;
+    background: #ffffff;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-radius: 5px 5px 0px 0px;
+}
+
+/* -------------------------------------------------- */
+/* Zone 1 CSS                                         */
+/* -------------------------------------------------- */
+#content .zone_1{
+    position: relative;
+    float: left;
+    width: 200px;
+}
+
+#content .zone_1 ul{
+    margin: 0px;
+    padding: 0px;
+	list-style-type: none;
+}
+
+#content .zone_1 li{}
+
+#content .zone_1 a:link, #content .zone_1 a:visited{
+	color: #df1c20;
+	text-decoration: none;
+	display: block;
+}
+
+#content .zone_1 a:hover, #content .zone_1 h3 em{
+	color: #cccccc;
+}
+
+
+/* -------------------------------------------------- */
+/* Zone 2 CSS                                         */
+/* -------------------------------------------------- */
+#content .zone_2{
+    position: relative;
+    float: left;
+    width: 570px;
+    padding: 5px;
+}
+
+
+/* -------------------------------------------------- */
+/* Zone 3 CSS                                         */
+/* -------------------------------------------------- */
+#content .zone_3{
+    position: relative;
+    float: left;
+    width: 200px;
+}
+
+
+
+
+
+
+
+
+
+/*
+#content .title{
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+}
+
+#content .content{
+    position: relative;
+    float: left;
+    width: 540px;
+    background: #ffff00;
+    padding: 10px;
+}
+
+#content .content p{
+    padding: 10px 10px 0px 0px;
+}
+
+#content .editor-label{
+    color: #777777;
+    font-family: Arial;
+    font-size: small;
+    margin: 5px 0px 0px 0px;
+}
+
+#content .editor-field input[type="text"],
+#content .editor-field input[type="password"] {
+    font-size: small;
+    margin: 0px;
+    width: 300px;
+    color: #444444;
+    border: 1px solid #cccccc;
+    background: #eeeeee;
+}
+
+#content .editor-button{
+    position: relative;
+    float: left;
+}
+
+*/
+/* -------------------------------------------------- */
+/* Navigation CSS                                     */
+/* -------------------------------------------------- */
+/*
+#content .nav_zone{
+    position: relative;
+    float:left;
+    width: 180px;
+    margin: 20px 0px 10px 10px;
+    padding: 5px;
+    color: #df1c20;
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    background: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+}
+
+#content .nav_zone ul{
+    margin:0px;
+    padding: 0px;
+	list-style-type: none;
+}
+
+#content .nav_zone li{
+    margin: 0px;
+}
+
+#content .nav_zone a:link, #content .nav_zone a:visited{
+	color: #df1c20;
+	text-decoration: none;
+	display: block;
+}
+
+#content .nav_zone a:hover, #content .nav_zone h3 em{
+	color: #cccccc;
+}
+
+*/
+/* -------------------------------------------------- */
+/* Add Zone CSS                                       */
+/* -------------------------------------------------- */
+/*
+#content .add_zone{
+    position: relative;
+    float:left;
+    width: 180px;
+    margin: 20px 0px 10px 10px;
+    padding: 5px;
+    color: #df1c20;
+    background: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+}
+*/

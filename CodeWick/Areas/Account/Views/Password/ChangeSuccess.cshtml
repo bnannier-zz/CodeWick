@@ -1,0 +1,19 @@
+﻿@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Account/_Account.cshtml";
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName;
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Account/Account.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm()) {
+<div id="account">
+    <div class="title"><h2>Change Password</h2></div>
+    <div class="content"><p>Your password has been changed successfully.</p></div>
+</div>
+}

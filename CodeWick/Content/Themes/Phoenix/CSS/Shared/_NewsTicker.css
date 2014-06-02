@@ -1,0 +1,19 @@
+﻿/* -------------------------------------------------- */
+/* News Ticker Module CSS                             */
+/* -------------------------------------------------- */
+#news_ticker {
+    position: relative;
+    float: left;
+    background: #ffffff;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #cccccc;
+    border-bottom: 0px;
+}
+
+#news_ticker .container{
+    position: relative;
+    float: left;
+    width: 303px;
+    height: 200px;
+    margin: 10px 5px 10px 10px;
+}

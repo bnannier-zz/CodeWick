@@ -1,0 +1,27 @@
+﻿@model CodeWick.Models.SiteIndexModel
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Site/_Index.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Site/_Site.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName;
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Site/Content.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm()) {
+    if (Model != null) {
+        foreach (Zone zone in Model.Zones) {
+        }
+    } else {
+        <p>@(((Setting)Session["setting"]).SiteName) under maintenance mode.</p>
+    }
+}

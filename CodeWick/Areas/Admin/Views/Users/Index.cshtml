@@ -1,0 +1,59 @@
+@model IEnumerable<CodeWick.Models.User>
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/User.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin User";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/WebGrid.css")" rel="stylesheet" type="text/css" />
+}
+
+@{
+    var grid = new WebGrid(
+        source: Model,
+        defaultSort: "Username",
+		rowsPerPage: 10);
+}
+
+<div id="admin">
+    @if(Context.User.IsInRole("administrator")) {
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>Users</legend>
+			<div id="grid">
+				@grid.GetHtml(
+					tableStyle: "grid",
+					headerStyle: "head",
+					footerStyle: "foot",
+					rowStyle: "row",
+					alternatingRowStyle: "alt",
+					columns: grid.Columns(
+						grid.Column("Username", "Username"),
+						grid.Column("Email", "Email"),
+						grid.Column("FirstName", "First Name"),
+						grid.Column("LastName", "Last Name"),
+						grid.Column("Roles.Count", "Roles"),
+						grid.Column(format: (item) => Html.ActionLink("Details", "Details", new { id = item.UserId })),
+						grid.Column(format: (item) => Html.ActionLink("Edit", "Edit", new { id = item.UserId })),
+						grid.Column(format: (item) => Html.ActionLink("Delete", "Delete", new { id = item.UserId }))
+					)
+				)
+            </div>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_create.png"), "Create", "Create", "Users", null, null, new { @class = "editor-button" }, new { @class = "editor-image" })
+	    </fieldset>
+    </div>
+    } else {
+        <div>Administrator access required.</div>
+    }
+</div>

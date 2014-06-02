@@ -1,0 +1,23 @@
+﻿@using CodeWick.Helpers
+
+<div class="admin_adminNavigation">
+    @if (Context.User.IsInRole("administrator")) {
+    <ul>
+        <li>@Html.ActionLink("Settings", "Index", "Settings")</li>
+        <li>@Html.ActionLink("Themes", "Index", "Themes")</li>
+        <li>@Html.ActionLink("Users", "Index", "Users")</li>
+        <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+        <br />
+        <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+        <li>@Html.ActionLink("Contents", "Index", "Contents")</li>
+        <li>@Html.ActionLink("Quotes Requested", "Index", "RequestQuotes")</li>
+        <br />
+        <li>@Html.ActionLink("Exceptions", "Index", "LogExceptions")</li>
+        <li>@Html.ActionLink("Messages", "Index", "LogMessages")</li>
+        <br />
+        <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
+        <li>@Html.ActionLink("Views", "Index", "Views")</li>
+        <li>@Html.ActionLink("Zones", "Index", "Zones")</li>
+    </ul>
+   }
+</div>

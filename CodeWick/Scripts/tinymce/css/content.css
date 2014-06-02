@@ -1,0 +1,61 @@
+﻿h1{
+    font-size: 24pt;
+    color: #99cc00;
+    margin: 0px;
+    padding: 0px;
+}
+
+h2{
+    font-size: 18pt;
+    color: #99cc00;
+    margin: 0px;
+    padding: 0px;
+}
+
+h3{
+    font-size: 14pt;
+    color: #666666;
+    margin: 0px;
+    padding: 0px;
+}
+
+h4{
+    font-size: 12pt;
+    color: #777777;
+    margin: 0px;
+    padding: 0px;
+}
+
+h5{
+    font-size: 10pt;
+    color: #888888;
+    margin: 0px;
+    padding: 0px;
+}
+
+h6{
+    font-size: 8pt;
+    color: #999999;
+    margin: 0px;
+    padding: 0px;
+}
+
+p{
+    font-size: 11pt;
+    color: #999999;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul{
+    font-size: 11pt;
+    color: #999999;
+    margin: 0px;
+    padding: 0px;
+}
+
+hr{
+    margin: 0px;
+    padding: 0px;
+    border: 2px solid #df1c20;
+}

@@ -1,0 +1,57 @@
+@model CodeWick.Models.Zone
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+<script type="text/javascript">
+    $(function () { $(".datefield").datepicker(); });
+</script>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Width)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Width)
+    @Html.ValidationMessageFor(model => model.Width)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Height)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Height)
+    @Html.ValidationMessageFor(model => model.Height)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Order)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Order)
+    @Html.ValidationMessageFor(model => model.Order)
+</div>
+
+
+<div class="editor-label">
+    Area
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.AreaId, ((IEnumerable<CodeWick.Models.Area>)ViewBag.PossibleAreas).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.(ChangeName)).ToString(), 
+        Value = option.AreaId.ToString(),
+        Selected = (Model != null) && (option.AreaId == Model.AreaId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.AreaId)
+</div>
+<div class="editor-label">
+    View
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ViewId, ((IEnumerable<CodeWick.Models.View>)ViewBag.PossibleViews).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.(ChangeName)).ToString(), 
+        Value = option.ViewId.ToString(),
+        Selected = (Model != null) && (option.ViewId == Model.ViewId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.ViewId)
+</div>

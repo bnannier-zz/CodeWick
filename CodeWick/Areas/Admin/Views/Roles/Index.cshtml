@@ -1,0 +1,71 @@
+@model IEnumerable<CodeWick.Models.Role>
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/Role.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin Role";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/WebGrid.css")" rel="stylesheet" type="text/css" />
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.child').click(function () {
+            $('#relationship_wrapper').show();
+        });
+
+        $('#relationship_wrapper').hide();
+        $('#busyIndicator').hide();
+    });
+</script>
+
+@{
+    var grid = new WebGrid(
+        source: Model,
+        defaultSort: "RoleName",
+		rowsPerPage: 10);
+}
+
+<div id="admin">
+@*    @if(Context.User.IsInRole("administrator")) {*@
+    <div id="relationship_wrapper" class="relationship_wrapper"></div>
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>Roles</legend>
+			<div id="grid">
+				@grid.GetHtml(
+                    tableStyle: "grid",
+                    headerStyle: "head",
+                    footerStyle: "foot",
+                    rowStyle: "row",
+                    alternatingRowStyle: "alt",
+                    columns: grid.Columns(
+                        grid.Column("RoleName", "Role Name"),
+                        grid.Column("Description", "Description"),
+                        grid.Column("Users.Count", "User Amount"),
+                        grid.Column(format: (item) => Ajax.ActionLink("Users", "_RoleUsers", "Roles", new { id = item.RoleId }, new AjaxOptions { UpdateTargetId = "relationship_wrapper" }, new { @class = "child" })),
+                        grid.Column(format: (item) => Ajax.ActionLink("Details", "_Details", "Roles", new { id = item.RoleId }, new AjaxOptions { UpdateTargetId = "relationship_wrapper" }, new { @class = "child" })),
+                        grid.Column(format: (item) => Ajax.ActionLink("Edit", "_Edit", "Roles", new { id = item.RoleId }, new AjaxOptions { UpdateTargetId = "relationship_wrapper" }, new { @class = "child" })),
+                        grid.Column(format: (item) => Ajax.ActionLink("Delete", "_Delete", "Roles", new { id = item.RoleId }, new AjaxOptions { UpdateTargetId = "relationship_wrapper" }, new { @class = "child" }))
+                    )
+                )
+            </div>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_create.png"), "Create", "_Create", "Roles", "relationship_wrapper", null, new { @class = "editor-button" }, new { @class = "editor-image" })
+	    </fieldset>
+    </div>
+@*    } else {
+        <div>Administrator access required.</div>
+    }*@
+</div>
+<div id="busyIndicator"></div>

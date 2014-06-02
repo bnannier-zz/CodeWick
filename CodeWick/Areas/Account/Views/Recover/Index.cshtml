@@ -1,0 +1,32 @@
+﻿@model CodeWick.Areas.Account.Models.RecoverModel
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Account/_Account.cshtml";
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Recover";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Account/Account.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm()) {
+<div id="account">
+    <div class="title"><h2>Client Login Recovery</h2></div>
+    <div class="content">
+        <div>@Html.ValidationSummary(true, "Recovery was unsuccessful. Please correct the errors and try again.")</div>
+
+        <div class="editor-label">@Html.LabelFor(m => m.UserName_Email)</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserName_Email)
+            @Html.ValidationMessageFor(m => m.UserName_Email)
+        </div>
+
+        <div class="editor-button">
+	        <button id="btn_recover" type="submit" name="recover" ><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_recover.png")" alt=""/></button>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,12 @@
+﻿body {
+    background: #eeeeee url('../Images/background_general.png') repeat-x;
+    font-family: 'Arial', 'Georgia', sans-serif;
+}
+
+header{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 109px;
+    background-color: transparent;
+}

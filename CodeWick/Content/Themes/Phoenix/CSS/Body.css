@@ -1,0 +1,134 @@
+﻿a, abbr, acronym, address, applet, article, aside, audio, 
+b, big, blockquote, body, button, 
+canvas, center, caption, cite, code, 
+del, details, dd, dfn, div, dl, dt, 
+em, embed, 
+fieldset, figcaption, figure, footer, form, 
+h1, h2, h3, h4, h5, h6, header, hgroup, html, 
+i, iframe, img, ins, input, 
+kbd,
+label, legend, li, 
+menu, mark,
+nav, 
+object, ol, output, 
+p, pre, 
+q, 
+ruby, 
+s, samp, section, small, span, strike, strong, sub, summary, sup, 
+table, tbody, td, tfoot, th, thead, time, tr, tt, 
+u, 
+var, video{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+.site_dimension{
+    position: relative;
+    left: 50%;
+    margin-left: -490px;
+    width: 980px;
+    background-color: transparent;
+}
+
+fieldset{
+    padding: 10px;
+    margin: 10px;
+    width: auto;
+    border: 1px solid #cccccc;
+}
+
+legend{
+    color: #df1c20;
+    font-size: large;
+    font-weight: bold;
+}
+
+h1{ font-size: 24pt; }
+h2{ font-size: 18pt; }
+h3{ font-size: 14pt; }
+h4{ font-size: 12pt; }
+h5{ font-size: 10pt; }
+h6{ font-size: 8pt; }
+
+a:link{color: #ff0000; text-decoration: none; font-size: small;}
+a:visited{color: #ff0000;  text-decoration: none; font-size: small;}
+a:hover{color: #888888; text-decoration: none; font-size: small;}
+a:active{color: #ff0000;  text-decoration: none; font-size: small;}
+
+p{
+    font-size: 13px;
+    padding: 10px 0px 20px 0px;
+}
+
+/* ------------------------------------------------------------ */
+/* label & field properties                                     */
+/* ------------------------------------------------------------ */
+.display-label {
+    font-size: small;
+    color: #444444;
+}
+
+.editor-label, .display-label{
+    color: #777777;
+    font-family: Arial;
+    font-size: small;
+    margin: 10px 0px 0px 0px;
+}
+
+.display-field {
+    margin: 0px 0px 0px 10px;
+}
+
+.editor-field input[type="text"],
+.editor-field input[type="password"] {
+    font-size: small;
+    margin: 0px;
+    width: 300px;
+    color: #444444;
+    border: 1px solid #cccccc;
+    background: #eeeeee;
+}
+
+.editor-button{
+    position: relative;
+    float: left;
+    margin: 0px 10px 0px 0px;
+}
+
+.editor-image{
+}
+
+.editor-link{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-size: xx-small;
+}
+
+/* ------------------------------------------------------------ */
+/* Styles for validation helpers                                */
+/* ------------------------------------------------------------ */
+.field-validation-error{color: #ff0000; font-size: small;}
+.field-validation-valid{display: none;}
+.input-validation-error{border: 1px solid #ff0000; background-color: #ffeeee;}
+.validation-summary-valid{display: none;}
+.validation-summary-errors{
+    padding: 10px;
+    border: 1px solid #e4abab;
+    background: #eeeeee url(../Images/bg_error.png) repeat;
+    color: #ff3654; font-family: Arial; font-size: small; font-weight: normal;
+}
+
+.validation-summary-errors ul{
+    margin: 0px 0px 0px 20px;
+}
+
+
+/* ------------------------------------------------------------ */
+/* table styles                                                 */
+/* ------------------------------------------------------------ */
+td{vertical-align: top;}

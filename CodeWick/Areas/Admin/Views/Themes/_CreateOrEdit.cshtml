@@ -1,0 +1,27 @@
+@model CodeWick.Models.Theme
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+<script type="text/javascript">
+    $(function () { $(".datefield").datepicker(); });
+</script>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ThemeName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ThemeName)
+    @Html.ValidationMessageFor(model => model.ThemeName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Abbreviation)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Abbreviation)
+    @Html.ValidationMessageFor(model => model.Abbreviation)
+</div>
+
+

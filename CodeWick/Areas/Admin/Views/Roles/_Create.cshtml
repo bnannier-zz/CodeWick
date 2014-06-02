@@ -1,0 +1,53 @@
+@model CodeWick.Models.Role
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".exit").click(function () {
+            $("#busyIndicator").show();
+
+            $.ajax({
+                url: '@Url.Action("Index", "Roles", new { Area = "Admin"})',
+                type: 'POST',
+                traditional: true,
+                success: function (data) {
+                    $('#content').html(data);
+                    $('#relationship_wrapper').empty();
+                    $('#relationship_wrapper').hide();
+                    $("#busyIndicator").hide();
+                }
+            });
+        });
+
+        $(".datefield").datepicker();
+    });
+</script>
+
+<div class="relationship_opacity"></div>
+<div class="relationship_content">
+    <fieldset>
+		<legend>New Role</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RoleName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.RoleName)
+                @Html.ValidationMessageFor(model => model.RoleName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+			<button type="submit" name="create" class="editor-button"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_create.png")" alt="" class="editor-image" /></button>
+		}
+	</fieldset>
+    <div class="relationship_exit"><a href="#" class="exit"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_exit.png")" alt="" class="editor-image" /></a></div>
+</div>

@@ -1,0 +1,42 @@
+@model CodeWick.Models.Setting
+@using CodeWick.Models;
+@using CodeWick.Helpers;
+@using System.Web;
+
+@{
+    string layoutLocation = "/Admin/Setting.cshtml";
+    if (System.IO.File.Exists(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/Content")) + "/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation)) {
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts" + layoutLocation;
+    }else{
+        Layout = "~/Content/Themes/" + ((Theme)Session["theme"]).Abbreviation + "/Layouts/Admin/_Admin.cshtml";
+    }
+    ViewBag.Title = ((Setting)Session["setting"]).SiteName + ": Admin Setting";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/CSS/Admin/Admin.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="admin">
+    @if(Context.User.IsInRole("administrator")) {
+    <div class="sidebar">@Html.Action("_Navigation", "Modules")</div>
+    <div class="content">
+        <fieldset>
+			<legend>Delete Setting</legend>
+		@using (Html.BeginForm()) {
+			@Html.ValidationSummary(true)
+			<div class="display-label">Site Name:</div>
+			<div class="display-field">@Model.SiteName</div>
+			<div class="display-label">URL:</div>
+			<div class="display-field">@Model.URL</div>
+			<div class="display-label">Theme:</div>
+			<div class="display-field">@Html.DisplayTextFor(_ => Model.Theme).ToString()</div>
+			<button type="submit" name="delete" class="editor-button"><img src="@Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_delete.png")" alt="" class="editor-image" /></button>
+			@Html.ActionImage(Url.Content("~/Content/Themes/" + (((Theme)Session["theme"]).Abbreviation) + "/Images/btn_cancel.png"), "Index", "Index", "Settings", null, null, new { @class = "editor-button" }, new { @class = "editor-image" })
+		}
+	    </fieldset>
+    </div>
+    } else {
+        <div>Administrator access required.</div>
+    }
+</div>
